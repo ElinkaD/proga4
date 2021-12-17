@@ -1,6 +1,6 @@
 package main;
 
-public class KristoferRobin extends Person implements Message,Busy{
+public class KristoferRobin extends Person implements Message{
     public static boolean flagKrist = true;
     KristoferRobin (String name, State state, Condition condition){
         super(name, state, condition);

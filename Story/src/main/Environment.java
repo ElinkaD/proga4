@@ -6,13 +6,17 @@ public class Environment {
     Environment(StateWeather weather){
         this.weather = weather;
     }
-    protected void setStateWeather(StateWeather weather) {
+
+    protected void setStateWeather(StateWeather weather) throws StateWeatherException{
+        if (weather.getStateWeather() == null) {
+            throw new StateWeatherException("Некоректно введена погода");
+        }
         try {
             weather.getStateWeather();
             System.out.format("*Пошел %s.\n", weather.getStateWeather());
         }
-        catch (NullPointerException e){
-            System.err.println("Вы ввели некоректное значение погоды");
+        catch (StateWeatherException e){
+            System.err.println(e.getMessage());
         }
     }
     public StateWeather getStateWeather() {
