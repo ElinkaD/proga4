@@ -8,15 +8,11 @@ public class Environment {
     }
 
     protected void setStateWeather(StateWeather weather) throws StateWeatherException{
-        if (weather.getStateWeather() == null) {
-            throw new StateWeatherException("Некоректно введена погода");
-        }
         try {
-            weather.getStateWeather();
             System.out.format("*Пошел %s.\n", weather.getStateWeather());
         }
-        catch (StateWeatherException e){
-            System.err.println(e.getMessage());
+        catch (NullPointerException e){
+            System.out.println("Некоректно введена погода");
         }
     }
     public StateWeather getStateWeather() {
